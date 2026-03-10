@@ -1,6 +1,6 @@
 #include "Character.h"
 
-Character::Character(string n, string t) : name(n), type(t){
+Character::Character(string n, string t) : name(n), type(t), xp(0){
     if (t == "Wizard"){
         hp = 5;
         full_hp = 5;
@@ -41,6 +41,7 @@ void Character::print() {
 }
 
 void Character::print_with_weapon(){
+    cout << "LEVEL: " << get_level() << endl;
     cout << "NAME: " << name << endl;
     cout << "HP  : "; print_hp(); cout << endl;
     cout << "PWR : " << power << endl;
@@ -63,4 +64,13 @@ void Character::heal(int heal){
     }else{
         hp += heal;
     }
+}
+
+void Character::attack(Enemy* enemy){
+    xp += 100;
+    weapon.attack(enemy);
+}
+
+int Character::get_level(){
+    return xp / 200;
 }

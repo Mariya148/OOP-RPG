@@ -1,5 +1,4 @@
 #include <iostream>
-#include "Character.h"
 
 using namespace std;
 
@@ -11,4 +10,5 @@ class Enemy{
     Enemy();
 
     void print();
+    void takeDamage(int);
 };

@@ -7,3 +7,10 @@ Enemy::Enemy():hp(0), damage(0){} // Empty Constructor
 void Enemy::print(){ // Really simple print
     cout << "HP:" << hp << "\t DMG:" << damage << endl;
 }
+
+void Enemy::takeDamage(int dmg){
+    hp -= dmg;
+    if(hp <= 0){
+        damage = 0;
+    }
+}

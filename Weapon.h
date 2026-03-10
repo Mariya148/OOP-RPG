@@ -1,5 +1,5 @@
-
 #include <iostream>
+#include "Enemy.h"
 
 using namespace std;
 
@@ -14,5 +14,6 @@ class Weapon{
     Weapon();
     Weapon(string);
 
+    void attack(Enemy*);
     void print();
 };

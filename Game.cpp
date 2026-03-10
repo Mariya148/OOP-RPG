@@ -66,7 +66,9 @@ void Game::MainMenu(){
 void Game::NextLevel(){
     currentLevel++;
 
-    cout << "You are in level " << currentLevel << " Playing as: " << endl;
 
-    myCharacter.print_with_weapon();
+    Level newLevel = Level(currentLevel, myCharacter);
+
+    newLevel.start();
+
 }

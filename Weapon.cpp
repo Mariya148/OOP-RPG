@@ -31,3 +31,8 @@ void Weapon::print(){
     cout << "NAME : " << name << endl;
     cout << "STATS: " << "DMG " << damage << " | " << "DUR " << durability << endl;
 }
+
+void Weapon::attack(Enemy* enemy){
+    durability--;
+   enemy->takeDamage(damage);
+}
