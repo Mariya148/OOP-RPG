@@ -5,7 +5,8 @@
 Game::Game(){
     characterCount = 1;
 
-    characters[0] = Character("Mousa", "Warrior");
+    characters[0] = Wizard("Mousa");
+
     currentLevel = 0;
 }
 
@@ -45,8 +46,20 @@ void Game::MainMenu(){
             while(selectedType > 2 || selectedType < 0){
                 cout << "Enter the type: "; cin >>selectedType;
             }
-            Character newChar = Character(name, types[selectedType]);
-
+            Character newChar;
+            switch (selectedType) {
+                case 0:
+                newChar = Warrior(name);
+                break;
+                case 1:
+                newChar = Archer(name);
+                break;
+                case 2:
+                newChar = Wizard(name);
+                break;
+                default:
+                break;
+            }
             characters[characterCount] = newChar;
             characterCount++;
 
@@ -64,11 +77,13 @@ void Game::MainMenu(){
 }
 
 void Game::NextLevel(){
+    bool won = true;
+    while(won){
     currentLevel++;
 
+    Level newLevel = Level(currentLevel, &myCharacter);
 
-    Level newLevel = Level(currentLevel, myCharacter);
-
-    newLevel.start();
-
+    won = newLevel.start();
+    }
+    cout << "Game Over!" << endl;
 }

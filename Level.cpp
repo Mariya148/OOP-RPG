@@ -3,7 +3,7 @@
 
 Level::Level(){}
 
-Level::Level(int number, Character c): levelNumber(number), character(c){
+Level::Level(int number, Character* c): levelNumber(number), character(c){
     srand(time(0));
 
     for(int i = 0; i < 3; i++){
@@ -13,10 +13,10 @@ Level::Level(int number, Character c): levelNumber(number), character(c){
     }
 } // Constructor
 
-void Level::start(){ // Starting the level here
+bool Level::start(){ // Starting the level here
     while(true){
-        system("clear");
-    character.print_with_weapon();
+    system("clear");
+    character->print_with_weapon();
 
     cout << "------Enemies-------" << endl;
 
@@ -30,7 +30,7 @@ void Level::start(){ // Starting the level here
     }
 
     if(counter == 3){
-        cout << "YOU WON!" << endl;
+        return true;
         break;
     }
 
@@ -38,7 +38,10 @@ void Level::start(){ // Starting the level here
     while(input < 0 || input > 2){
        cout << "Choose an enemy to attack: "; cin >> input;
     }
-
-        character.attack(&enemies[input]);
+        bool done = character->attack(&enemies[input]);
+        if(!done){
+            return false;
+        }
     }
+    return false;
 }

@@ -14,6 +14,6 @@ class Weapon{
     Weapon();
     Weapon(string);
 
-    void attack(Enemy*);
+    bool attack(Enemy*);
     void print();
 };

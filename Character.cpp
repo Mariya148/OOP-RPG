@@ -1,28 +1,8 @@
 #include "Character.h"
 
-Character::Character(string n, string t) : name(n), type(t), xp(0){
-    if (t == "Wizard"){
-        hp = 5;
-        full_hp = 5;
-        power = 4;
-        weapon = Weapon("Wand");
-    }else if (t == "Archer"){
-        hp = 7;
-        full_hp = 7;
-        power = 3;
-        weapon = Weapon("Bow");
-    }else if(t == "Warrior"){
-        hp = 10;
-        full_hp = 10;
-        power = 2;
-        weapon = Weapon("Sword");
-    }else{
-        cout << "Wrong type" << endl;
-        exit(1);
-    }
-}
+Character::Character(string n, string t) : name(n), type(t), xp(0){}
 
-Character::Character(): name("Empty"), hp(0), power(0), type("Empty"){}
+Character::Character(): name("Empty"), hp(0), power(0), type("Empty"), full_hp(0){}
 
 void Character::print_hp(){
     for(int i = 0; i < full_hp ; i++){
@@ -66,9 +46,10 @@ void Character::heal(int heal){
     }
 }
 
-void Character::attack(Enemy* enemy){
+// Returns true if able to attack, else return flase
+bool Character::attack(Enemy* enemy){
     xp += 100;
-    weapon.attack(enemy);
+    return weapon.attack(enemy);
 }
 
 int Character::get_level(){

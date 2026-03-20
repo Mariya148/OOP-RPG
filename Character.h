@@ -5,8 +5,10 @@ using namespace std;
 
 class Character{
     private:
-    int full_hp;
     int xp;
+
+    protected:
+    int full_hp;
 
     public:
     string name;
@@ -22,7 +24,7 @@ class Character{
 
     void takeDamage(int);
     void heal(int);
-    void attack(Enemy*);
+    bool attack(Enemy*);
 
     void print_hp();
 
@@ -30,4 +32,19 @@ class Character{
     void print_with_weapon();
 
     int get_level();
+};
+
+class Wizard : public Character{
+    public:
+    Wizard(string);
+};
+
+class Archer : public Character{
+    public:
+    Archer(string);
+};
+
+class Warrior : public Character{
+    public:
+    Warrior(string);
 };

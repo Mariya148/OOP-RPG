@@ -32,7 +32,14 @@ void Weapon::print(){
     cout << "STATS: " << "DMG " << damage << " | " << "DUR " << durability << endl;
 }
 
-void Weapon::attack(Enemy* enemy){
+// Returns true if attacked and false if broken!
+bool Weapon::attack(Enemy* enemy){
+    if (durability <= 0){
+        cout << "Broken" << endl;
+        return false;
+    }else{
     durability--;
    enemy->takeDamage(damage);
+   return true;
+    }
 }
