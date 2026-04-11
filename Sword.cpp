@@ -2,6 +2,8 @@
 
 Sword::Sword() : Weapon("Sword"){
     repair_cost =70;  // you need 70 xp to increase durability by 10
+    damage = (rand() % 5) + 3;
+    durability = (rand() % 7) + 4;
 }
 
 
